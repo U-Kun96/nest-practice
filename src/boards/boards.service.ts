@@ -23,4 +23,8 @@ export class BoardsService {
     this.boards.push(board);
     return board;
   }
+
+  getBoardById(id:string):Board { // id로 게시물을 찾음 파라미터 = id, return 값은 하나이기 때문에 Board라고 지정해줌
+    return this.boards.find((board) => board.id === id)
+  }
 }
