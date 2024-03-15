@@ -78,5 +78,21 @@ interface나 class를 이용해서 정의 될 수 있음(Class 사용을 장려�
 인터페이스와 다르게 런타임에서 작동하기 때문에 파이프 같은 기능을 이용할 때 더 유용함
 
 - ID로 특정 게시물 가져오기
+- ID로 특정 게시물 지우기
+    deleteBoard(id:string):void {
+        // filter는 참 값을 반환하는 모든 값으로 새로운 배열을 구성한다. 즉, 거짓을 반환한 값은 제외된 배열이 생성됨.
+        // 원래 존재하던 boards 배열에서 필터를 돌리는데 배열 안에 id값이 입력한 id값과 일치하지 않는 것들을 배열로 만듦
+        // 즉, ID 값을 제외한 나머지 요소들만이 새롭게 배열로 만들어지고 boards에 할당이 된다. 
+        this.boards = this.boards.filter((board) => board.id !== id)
+    }
+
+- 특정 게시물 업데이트 하기
+
+- NestJS  Pipes
+Pipe란? @Injection() 데코레이터로 주석이 달린 클래스이다.
+파이프는 data transformation(데이터 변형)과 data validation(데이터 유효성 검사)을 위해 사용이 된다.
+파이프는 컨트롤러 경로 처리기에 의해 처리되는 인수에 대해 작동한다.
+Nest는 메소드가 호출되기 직전에 파이프를 삽입하고, 파이프는 메소드로 향하는 인수를 수신하고 이에 대해 작동함
+
 
 
