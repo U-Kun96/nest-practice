@@ -37,7 +37,12 @@ export class BoardsService {
   }
 
   deleteBoard(id: string): void {
-    this.boards = this.boards.filter((board) => board.id !== id);
+    const post = this.getBoardById(id);
+
+    if (!post) {
+      throw new NotFoundException(`해당하는 게시물이 존재하지 않습니다`);
+    }
+    this.boards = this.boards.filter((board) => board.id !== post.id);
   }
 
   updateBoardStatus(id: string, status: BoardStatus): Board {
