@@ -140,14 +140,14 @@ transform()메서드에서 Return된 값은 Route 핸들러로 전해진다.
 
 커스텀 파이프로 실제 구현할 기능: 상태(Status)는 PUBLIC과 PRIVATE만 올 수 있기 때문에 이외의 값이 들어오면 에러를 던져준다.
 
-4-1. Postgres & TypeORM 연동
+5-1. Postgres & TypeORM 연동
 
 1. PostgeSQL 공식 홈페이지에서 최신 버전을 다운로드 받아줌
 2. pgAdmin을 설치함
 3. pgAdmin을 실행해서 사용자를 추가해줌
 4. 서버를 새롭게 만든 후 데이터 베이스를 추가해줌
 
-4-2. TypeORM이란?
+5-2. TypeORM이란?
 - node.js에서 실행되고, TypeScript로 작성된 객체 관계형 매퍼 라이브러리
 
 * 객체지향 프로그래밍: 클래스 사용, 관계형 데이터베이스: 테이블 사용
@@ -164,7 +164,7 @@ TypeORM의 특징과 이점
 4. TypeORM은 간단한 코딩으로 ORM 프레임 워크를 사용하기 쉬움
 5. TypeORM은 다른 모듈과 쉽게 통합된다.
 
-4-3. TypeORM을 어플리케이션에서 이용하기
+5-3. TypeORM을 어플리케이션에서 이용하기
 - @nestjs/typeorm: 네스트에서 TypeORM을 사용하기 위해 연동시켜주는 모듈
 - typeorm: TypeORM 모듈
 - pg: Postgres 모듈
@@ -195,4 +195,10 @@ import { typeORMConfig } from './configs/typeorm.config';
 })
 export class AppModule {}
 
+5-4. 게시물을 위한 엔티티(entity) 생성하기 
+- 엔티티를 생성해야하는 이유: TypeORM을 사용할 때는 데이터베이스 테이블로 변환되는 Class이기 때문에 
+클래스를 생성하고 그 안에 컬럼들을 정의해주면 된다.
 
+- @Entity() : 생성하는 클래스가 엔티티임을 정의해주는 데코레이터
+- @PrimaryGeneratedColumn() : 엔티티의 기본 키 컬럼을 나타내주는 데코레이터(자동적으로 1씩 증가함)
+- @column: 엔티티에서 컬럼임을 나타내주는 데코레이터
